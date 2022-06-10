@@ -8,7 +8,8 @@ export class DataService {
   db:any = {
     1000:{"acno":1000,"username":"Neer","password":1000,"balance":4000},
     1001:{"acno":1001,"username":"Lipin","password":1001,"balance":5000},
-    1002:{"acno":1002,"username":"Girija","password":1002,"balance":2000}
+    1002:{"acno":1002,"username":"Girija","password":1002,"balance":2000},
+    
   }
 
   constructor() { }
