@@ -62,5 +62,13 @@
                 8.2 Model Driven Forms - First create model in ts
 
                     8.2.1 Reactive Forms - Add Validation: Import ReactiveFormsModule
-                            -form group -  FormBuilder dependency inject , form array, form control
+                            -form group -  FormBuilder dependency inject , form array, form control, form control
+
+            9 Angular Directives - To manipulate DOM
+
+                9.1 Component Directives
+
+                9.2 Structural Directives - To Change DOM structure
+
+                    9.2.1 ngIf - syntax: *ngIf="condition"
 
