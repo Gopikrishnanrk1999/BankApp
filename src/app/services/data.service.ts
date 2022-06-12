@@ -11,8 +11,18 @@ export class DataService {
     1002:{"acno":1002,"username":"Girija","password":1002,"balance":2000},
     
   }
+  currentUser: any;
 
   constructor() { }
+
+  saveDetails(){
+    if(this.db){
+      localStorage.setItem("database",JSON.stringify(this.db))
+    }
+    if(this.currentUser){
+      localStorage.setItem("currentUser",JSON.stringify(this.currentUser))
+    }
+  }
 
   login(acno: any, pswd: any) {
 
@@ -20,6 +30,8 @@ export class DataService {
 
     if (acno in db) {
       if (pswd == db[acno]["password"]) {
+        this.currentUser = db[acno]["username"]
+        this.saveDetails()
         return true;
       } else {
         alert("incorrect passsword")
@@ -46,6 +58,7 @@ export class DataService {
         password,
         "balance":0
       }
+      this.saveDetails()
       return true
     }
   }
@@ -56,6 +69,9 @@ export class DataService {
     if(acno in db){
       if(password == db[acno]["password"]){
       db[acno]["balance"]+=amount
+      console.log(db);
+      
+      this.saveDetails()
       return db[acno]["balance"]
       }
     else{
@@ -79,6 +95,7 @@ export class DataService {
         if(db[acno]["balance"]>amount){
 
           db[acno]["balance"]-=amount
+          this.saveDetails()
           return db[acno]["balance"]
 
         }

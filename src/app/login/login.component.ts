@@ -29,13 +29,19 @@ login(){
   var acno = this.loginForm.value.acno
   var pswd = this.loginForm.value.pswd
 
-  const result=this.ds.login(acno,pswd)
+  if(this.loginForm.valid){
+    const result=this.ds.login(acno,pswd)
   
-  if (result) {
-    alert("Login Successful")
-      this.router.navigateByUrl('dashboard')
+    if (result) {
+      alert("Login Successful")
+        this.router.navigateByUrl('dashboard')
+    }
+    
   }
-  
+  else{
+    alert("Invalid Form")
+  }
+ 
 }
 
 

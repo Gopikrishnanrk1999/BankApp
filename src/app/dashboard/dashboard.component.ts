@@ -28,9 +28,11 @@ export class DashboardComponent implements OnInit {
     pswd1:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]],
     amount1:['',[Validators.required,Validators.pattern('[0-9]*')]]
   })
+  user:any
 
-
-  constructor(private ds:DataService,private fb:FormBuilder) { }
+  constructor(private ds:DataService,private fb:FormBuilder) { 
+    this.user=this.ds.currentUser
+  }
 
   ngOnInit(): void {
   }
@@ -39,20 +41,32 @@ export class DashboardComponent implements OnInit {
     var pswd=this.DepositForm.value.pswd
     var amount=this.DepositForm.value.amount
 
-    const result=this.ds.deposit(acno,pswd,amount)
+    if(this.DepositForm.valid){
+      const result=this.ds.deposit(acno,pswd,amount)
     if(result){
       alert(amount+" deposited successfully and new balance is:" +result )
     }
+    }
+    else{
+      alert("Invalid Inputs")
+    }
+    
   }
   withdraw(){
      var acno=this.WithdrawForm.value.acno1
     var pswd=this.WithdrawForm.value.pswd1
     var amount=this.WithdrawForm.value.amount1
-
-    const result=this.ds.withdraw(acno,pswd,amount)
+    
+    if(this.WithdrawForm.valid){
+      const result=this.ds.withdraw(acno,pswd,amount)
     if(result){
       alert(amount+" Withdrawn and new balance is:" +result )
     }
+    }
+    else{
+      alert("Invalid Inputs")
+    }
+    
   }
 
 
