@@ -6,14 +6,26 @@ import { Injectable } from '@angular/core';
 export class DataService {
   // database
   db:any = {
-    1000:{"acno":1000,"username":"Neer","password":1000,"balance":4000},
-    1001:{"acno":1001,"username":"Lipin","password":1001,"balance":5000},
-    1002:{"acno":1002,"username":"Girija","password":1002,"balance":2000},
+    1000:{"acno":1000,"username":"Neer","password":1000,"balance":4000,transaction: []},
+    1001:{"acno":1001,"username":"Lipin","password":1001,"balance":5000,transaction: []},
+    1002:{"acno":1002,"username":"Girija","password":1002,"balance":2000,transaction: []},
     
   }
   currentUser: any;
 
-  constructor() { }
+  constructor() { 
+    this.getDetails()
+  }
+
+  getDetails(){
+    if(localStorage.getItem("database")){
+      this.db =JSON.parse(localStorage.getItem("database")|| '')
+    }
+    if(localStorage.getItem("currentUser")){
+      this.currentUser =JSON.parse(localStorage.getItem("currentUser")|| '')
+    }
+  }
+
 
   saveDetails(){
     if(this.db){
@@ -56,7 +68,8 @@ export class DataService {
         acno,
         username,
         password,
-        "balance":0
+        "balance":0,
+        transaction:[]
       }
       this.saveDetails()
       return true
@@ -69,7 +82,10 @@ export class DataService {
     if(acno in db){
       if(password == db[acno]["password"]){
       db[acno]["balance"]+=amount
-      console.log(db);
+      db[acno].transaction.push({
+        type:"CREDIT",
+        amount:amount
+      })
       
       this.saveDetails()
       return db[acno]["balance"]
@@ -95,6 +111,10 @@ export class DataService {
         if(db[acno]["balance"]>amount){
 
           db[acno]["balance"]-=amount
+          db[acno].transaction.push({
+            type:"DEPOSIT",
+            amount:amount
+          })
           this.saveDetails()
           return db[acno]["balance"]
 
