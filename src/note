@@ -70,7 +70,9 @@
 
                 9.2 Structural Directives - To Change DOM structure
 
-                    9.2.1 ngIf - syntax: *ngIf="condition" 
+                    9.2.1 ngIf - syntax: *ngIf="condition"
+
+                    9.2.2 ngFor - syntax: *ngFor="iterator of array-name" 
 
             10. Local Storage - to permanently store data in browser
 

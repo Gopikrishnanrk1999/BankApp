@@ -12,6 +12,7 @@ export class DataService {
     
   }
   currentUser: any;
+  currentAcno: any;
 
   constructor() { 
     this.getDetails()
@@ -24,6 +25,9 @@ export class DataService {
     if(localStorage.getItem("currentUser")){
       this.currentUser =JSON.parse(localStorage.getItem("currentUser")|| '')
     }
+    if(localStorage.getItem("currentAcno")){
+      this.currentAcno =JSON.parse(localStorage.getItem("currentAcno")|| '')
+    }
   }
 
 
@@ -34,6 +38,9 @@ export class DataService {
     if(this.currentUser){
       localStorage.setItem("currentUser",JSON.stringify(this.currentUser))
     }
+    if(this.currentAcno){
+      localStorage.setItem("currentAcno",JSON.stringify(this.currentAcno))
+    }
   }
 
   login(acno: any, pswd: any) {
@@ -43,6 +50,7 @@ export class DataService {
     if (acno in db) {
       if (pswd == db[acno]["password"]) {
         this.currentUser = db[acno]["username"]
+        this.currentAcno = acno
         this.saveDetails()
         return true;
       } else {
@@ -135,7 +143,9 @@ export class DataService {
     }
   }
 
-
+  getTransaction(acno:any){
+    return this.db[acno].transaction
+  }
 
 
 }

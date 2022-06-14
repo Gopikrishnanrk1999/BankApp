@@ -4,7 +4,8 @@
   </nav>
   <h4 style="color: azure;">Welcome {{user}}</h4>
   <a routerLink="/transaction">View Transaction History</a>
-  
+  <button class="btn btn-warning" (click)="logout()" style="float: right; margin-right: 20px;">Log out</button>
+  <hr>
   <div class="container col-md-12 mt-0">
 	  <div class="d-flex justify-content-center h-100">
 		  <div class="card">
