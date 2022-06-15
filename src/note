@@ -81,3 +81,9 @@
                 10.2 getItem()
 
                 10.3 removeItem()
+            
+            11. Angular Pipes: to convert the data format
+                    syntax: expression | pipe operator [ : pipe Arguments]
+
+        
+            12, Animation
