@@ -32,6 +32,9 @@ export class DashboardComponent implements OnInit {
 
   user:any
   lDate:any
+  del=""
+
+
   constructor(private ds:DataService,private fb:FormBuilder,private router:Router) { 
     this.user=this.ds.currentUser
     this.lDate=new Date()
@@ -81,7 +84,14 @@ export class DashboardComponent implements OnInit {
     localStorage.removeItem("currentAcno")
     this.router.navigateByUrl("")
   }
+  deleteConfirm(){
+    this.del=JSON.parse(localStorage.getItem("currentAcno")||'')
+  }
 
+  cancel(){
+    this.del=""
+  }
 
+    
   }
 

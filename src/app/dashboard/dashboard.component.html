@@ -5,10 +5,12 @@
   <h4 style="color: azure;">Welcome {{user}}</h4>
   <h5 style="color: white;">{{lDate|date: 'short'}}</h5>
   <a routerLink="/transaction">View Transaction History</a>
+  <button (click)="deleteConfirm()" style="float: right; margin-right: 20px;" class="btn btn-danger">Delete</button><br><br>
   <button class="btn btn-warning" (click)="logout()" style="float: right; margin-right: 20px;">Log out</button>
-  <app-animation-demo></app-animation-demo>
+  <!-- <app-animation-demo></app-animation-demo> -->
+  <app-delete-confirm (onCancel)="cancel()" [item]="del"></app-delete-confirm>
   <hr>
-  <div class="container col-md-12 mt-0">
+  <div [ngClass]="del?'c1':'' " class="container col-md-12 mt-0">
 	  <div class="d-flex justify-content-center h-100">
 		  <div class="card">
 			  <div class="card-header">
@@ -53,7 +55,7 @@
 
   <!-- Withdraw Form -->
 
-  <div class="container col-md-12 mt-0">
+  <div [ngClass]="del?'c1':'' " class="container col-md-12 mt-0">
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header">

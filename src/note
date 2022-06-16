@@ -74,6 +74,12 @@
 
                     9.2.2 ngFor - syntax: *ngFor="iterator of array-name" 
 
+                9.3 Attribute Directives - to apply set of style to html
+
+                    9.3.1 Predefined - eg: ngClass
+
+                    9.3.2 Userdefined 
+
             10. Local Storage - to permanently store data in browser
 
                 10.1 setItem()
@@ -86,4 +92,14 @@
                     syntax: expression | pipe operator [ : pipe Arguments]
 
         
-            12, Animation
+            12. Animation
+
+            13. parent- child Communication 
+
+                13.1 Parent to child : Input decorator
+
+                13.2 Child to parent : Output decorator
+
+            14. Event emitter - to generate userdefined events
+
+                14.1 emit() 

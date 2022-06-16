@@ -7,18 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./animation-demo.component.css'],
   animations:[
     trigger("openClose",[
-state('open',
-style({
-height:'500px' ,
-backgroundColor: 'blue'
-})
-),
-state('close',
-style({
-height:'80px' ,
-backgroundColor: 'red'
-})
-),
+state('open',style({height:'500px' ,backgroundColor: 'blue'})),
+state('close',style({height:'80px' ,backgroundColor: 'red'})),
 transition('open=>close',[
   animate('2s')
 ]),
